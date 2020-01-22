@@ -17,6 +17,21 @@ class ContainerController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         configureHomeController()
+        let rightSwipe = UISwipeGestureRecognizer(target: self, action: #selector(self.rSwipe))
+        self.view.addGestureRecognizer(rightSwipe)
+        let tap = UITapGestureRecognizer(target: self, action: #selector(self.touchTapped(_:)))
+        self.view.addGestureRecognizer(tap)
+    }
+    @objc func rSwipe(_ sender: UITapGestureRecognizer) {
+        UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 0.8, initialSpringVelocity: 0, options: .curveEaseInOut, animations: {
+            self.centerController.view.frame.origin.x = self.centerController.view.frame.width - 90
+        }, completion: nil)
+    }
+
+    @objc func touchTapped(_ sender: UITapGestureRecognizer) {
+        UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 0.8, initialSpringVelocity: 0, options: .curveEaseInOut, animations: {
+            self.centerController.view.frame.origin.x = 0
+        }, completion: nil)
     }
     
     override var preferredStatusBarStyle: UIStatusBarStyle{

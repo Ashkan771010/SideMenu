@@ -9,7 +9,7 @@
 import UIKit
 
 class HomeController: UIViewController {
-    
+    var centerController: UIViewController!
     var delegate: HomeControllerDelegate?
     
     override func viewDidLoad() {
@@ -28,5 +28,12 @@ class HomeController: UIViewController {
         navigationItem.leftBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "ic_menu_white_3x").withRenderingMode(.alwaysOriginal) , style: .plain, target: self, action: #selector(handleMenuToggle))
         
     }
+    
+    @objc func myViewTapped(_ sender: UITapGestureRecognizer) {
+        
+     self.centerController.view.frame.origin.x = 0
+        
+    }
+    
     
 }
